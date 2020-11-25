@@ -29,9 +29,10 @@ while(true){
       node b=a;
       Simulate(b.state,array<action,2>{mv,action{REST}}); //Opponent rests
       b.score=Eval(b.state);
+      b.first_action=curr_depth==1?mv:a.first_action;
       if(Best_Move[curr_depth].first>b.score){
         Best_Move[curr_depth].first=b.score;
-        Best_Move[curr_depth].second=mv;
+        Best_Move[curr_depth].second=b.first_action;
       }
       Curr_Depth.push_back(b);
     }
